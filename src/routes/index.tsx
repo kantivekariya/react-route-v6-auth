@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Dashboard from "../components/dashboard/Dashboard";
+import UserProfile from "../components/dashboard/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 
 const RootRoutes = () => {
@@ -24,7 +25,7 @@ const RootRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<PrivateRoute />}>
         <Route index element={<Dashboard />} />
-        <Route path="user-profile" element={<Login />} />
+        <Route path="user-profile" element={<UserProfile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
