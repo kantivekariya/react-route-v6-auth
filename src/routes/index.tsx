@@ -1,9 +1,24 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Dashboard from "../components/dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 
 const RootRoutes = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const cb = () => {
+      const isToken = localStorage.getItem('user')
+      if (!isToken) {
+        navigate('/login')
+      }
+    };
+    window.addEventListener("storage", cb);
+
+    return () => {
+      window.removeEventListener("storage", cb);
+    };
+  }, []);
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
