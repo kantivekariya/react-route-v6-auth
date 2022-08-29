@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
@@ -50,7 +50,6 @@ const Login = () => {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting,
             }) => (
               <form onSubmit={handleSubmit}>
                 <div className="mt-4">
